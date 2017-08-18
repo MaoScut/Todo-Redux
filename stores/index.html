@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+</html>
+<script>
+  const STORAGE_KEY = 'TODO_REDUX';
+//   const data = [{
+//   key: '123',
+//   content: 'contetn',
+//   checked: 'false',
+// },{
+//   key: '444',
+//   content: 'conttt',
+//   checked: false,
+// }];
+// localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+function getItemArray() {
+  return new Promise((resolve, reject) => {
+    const itemArray = JSON.parse(localStorage.getItem(STORAGE_KEY));
+    setTimeout(() => {
+      resolve(itemArray);
+    }, 200)
+  })
+}
+function setItemArray(itemArray) {
+  return new Promise((resolve, reject) => {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(itemArray));
+    setTimeout(() => {
+      getItemArray().then(itemArray => resolve(itemArray));
+    }, 300)
+  })
+}
+function addItem(item, cb) {
+  getItemArray().then(itemArray => {
+    setItemArray(itemArray.concat(item)).then(itemArray => cb(itemArray));
+  })
+}
+// getItemArray().then(itemArray => console.log(itemArray)).catch(() => console.log('error!'));
+// console.log('start to get data.'); 
+addItem({
+  key: '2',
+  content: 'sss',
+  checked: false,
+},(arr) => console.log(arr));
+</script>
