@@ -1,4 +1,4 @@
-import uuid from 'uuid';
+// import uuid from 'uuid';
 import * as storage from '../stores/storage';
 import * as ActionTypes from './actionTypes';
 
@@ -27,27 +27,14 @@ export function hide() {
 
 export function save(item) {
   return (dispatch) => {
-    storage.getItemArray().then((result) => {
-      if (item.id) {
-        const index = result.findIndex(v => v.id === item.id);
-        const newResult = result.slice();
-        newResult[index] = item;
-        return storage.setItemArray(newResult);
-      }
-      return storage.setItemArray(result.concat(Object.assign({}, item, {
-        id: uuid.v4(), checked: false,
-      })));
-    }).then(result => dispatch(createGetItemsAction(result)));
+    storage.addOrUpdateItem(item)
+      .then(result => dispatch(createGetItemsAction(result)));
   };
 }
 export function check(id) {
   return (dispatch) => {
-    storage.getItemArray().then((result) => {
-      const index = result.findIndex(v => v.id === id);
-      const newResult = result.slice();
-      newResult[index].checked = !newResult[index].checked;
-      return storage.setItemArray(newResult);
-    }).then(result => dispatch(createGetItemsAction(result)));
+    storage.toggleChecked(id)
+      .then(result => dispatch(createGetItemsAction(result)));
   };
 }
 export function create() {
@@ -73,9 +60,6 @@ export function statics() {
 }
 export function deleteItem(id) {
   return (dispatch) => {
-    storage.getItemArray().then((result) => {
-      const newResult = result.filter(v => v.id !== id);
-      return storage.setItemArray(newResult);
-    }).then(result => dispatch(createGetItemsAction(result)));
+    storage.deleteItem(id).then(result => dispatch(createGetItemsAction(result)));
   };
 }
