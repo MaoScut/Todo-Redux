@@ -5,6 +5,7 @@ module.exports = {
   entry: [
     'react-hot-loader/patch',
     './src/index.jsx',
+    // './src/test/testStorage.jsx',
   ],
   output: {
     filename: 'bundle.js',

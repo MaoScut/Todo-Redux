@@ -24,11 +24,13 @@ function Editor({ item, onSave, onCancel }) {
   );
 }
 Editor.propTypes = {
-  item: PropTypes.shape({
-    id: PropTypes.string,
-    content: PropTypes.string,
-    checked: PropTypes.bool,
-  }).isRequired,
+  // 新建的时候，item是null，所以这里不检查了
+  // item: PropTypes.shape({
+  //   id: PropTypes.string,
+  //   content: PropTypes.string,
+  //   checked: PropTypes.bool,
+  // }).isRequired,
+  item: PropTypes.isRequired,
   onSave: PropTypes.func.isRequired,
   onCancel: PropTypes.func.isRequired,
 };

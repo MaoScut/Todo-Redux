@@ -1,3 +1,5 @@
+import uuid from 'uuid';
+
 const STORAGE_KEY = 'TODO_REDUX';
 //   const dat = [{
 //   id: '123',
@@ -10,19 +12,49 @@ const STORAGE_KEY = 'TODO_REDUX';
 // }];
 // localStorage.setItem('TODO_REDUX', JSON.stringify(dat));
 export function getItemArray() {
-  return new Promise((resolve, reject) => {
-    const itemArray = JSON.parse(localStorage.getItem(STORAGE_KEY));
+  const itemArray = JSON.parse(localStorage.getItem(STORAGE_KEY));
+  return new Promise((resolve) => {
     setTimeout(() => {
       resolve(itemArray);
-    }, 200);
+    }, 500);
   });
 }
 export function setItemArray(itemArray) {
-  return new Promise((resolve, reject) => {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(itemArray));
-    setTimeout(() => {
-      getItemArray().then(results => resolve(results));
-    }, 300);
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(itemArray));
+  return getItemArray();
+}
+export function addOrUpdateItem(item) {
+  // 这里返回的是一个promise对象，所以不是阻塞的
+  // item有id，说明是更新
+  if (item.id) {
+    return getItemArray().then((result) => {
+      const index = result.findIndex(v => v.id === item.id);
+      const newResult = result.slice();
+      newResult[index].content = item.content;
+      setItemArray(newResult);
+    });
+  }
+  // 否则在末尾追加
+  return getItemArray().then(result => setItemArray(result.concat({
+    id: uuid.v4(),
+    content: item.content,
+    checked: false,
+  })));
+}
+export function deleteItem(id) {
+  return getItemArray().then((result) => {
+    const index = result.findIndex(v => v.id === id);
+    const newResult = result.slice();
+    newResult.splice(index, 1);
+    return setItemArray(newResult);
+  });
+}
+export function toggleChecked(id) {
+  return getItemArray().then((result) => {
+    const index = result.findIndex(v => v.id === id);
+    const newResult = result.slice();
+    newResult[index].checked = !newResult[index].checked;
+    return setItemArray(newResult);
   });
 }
 // function addItem(item, cb) {
