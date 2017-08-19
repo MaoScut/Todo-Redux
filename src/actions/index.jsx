@@ -1,6 +1,6 @@
+import uuid from 'uuid';
 import * as storage from '../stores/storage';
 import * as ActionTypes from './actionTypes';
-import uuid from 'uuid';
 
 function createGetItemsAction(items) {
   return {

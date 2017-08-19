@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import uuid from 'uuid';
 
 // function CreateTodo({ onCreate }) {
 //   let textInput = null;
