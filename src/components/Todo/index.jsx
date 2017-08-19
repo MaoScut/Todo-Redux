@@ -16,6 +16,11 @@ class Todo extends React.Component {
   }
   componentDidMount() {
     this.props.actions.getItems();
+    console.log('didmount');
+    // this.props.actions.statics();
+  }
+  componentDidUpdate() {
+    console.log('didupdate');
     this.props.actions.statics();
   }
   handleClick(e) {
@@ -23,8 +28,8 @@ class Todo extends React.Component {
     switch (targetClassName) {
       case 'delete-btn': this.props.actions.deleteItem(e.target.value);
         break;
-      case 'checkbox': this.props.actions.check(e.target.value);
-        break;
+      // case 'checkbox': this.props.actions.check(e.target.value);
+      //   break;
       default:
     }
   }
@@ -36,6 +41,7 @@ class Todo extends React.Component {
           hideDone={this.props.edit.hideAchievedItems}
           hideHandle={this.props.actions.hide}
           editHandle={this.props.actions.showEditor}
+          checkHandle={this.props.actions.check}
         />
         {(this.props.edit.isEditing ? <Editor
           item={this.props.edit.selectedItem}
