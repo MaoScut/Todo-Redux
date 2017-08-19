@@ -1,14 +1,14 @@
 const STORAGE_KEY = 'TODO_REDUX';
-//   const data = [{
-//   key: '123',
+//   const dat = [{
+//   id: '123',
 //   content: 'contetn',
-//   checked: 'false',
+//   checked: false,
 // },{
-//   key: '444',
+//   id: '444',
 //   content: 'conttt',
 //   checked: false,
 // }];
-// localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+// localStorage.setItem('TODO_REDUX', JSON.stringify(dat));
 export function getItemArray() {
   return new Promise((resolve, reject) => {
     const itemArray = JSON.parse(localStorage.getItem(STORAGE_KEY));

@@ -5,21 +5,21 @@ function Editor({ item, onSave, onCancel }) {
   let updateInput = null;
   function save() {
     if (updateInput.value !== '') {
-      onSave(updateInput.value);
+      onSave({
+        ...item,
+        content: updateInput.value,
+      });
     }
-  }
-  function cancel() {
-    onCancel();
   }
   return (
     <div>
       <input
         type="text"
         ref={(input) => { updateInput = input; }}
-        defaultValue={item.content}
-      />输入修改
-      <button onClick={save}>更新</button>
-      <button onClick={cancel}>取消</button>
+        defaultValue={item ? item.content : ''}
+      />{item ? '输入修改' : '输入待办事项'}
+      <button onClick={save}>{item ? '更新' : '保存'}</button>
+      <button onClick={onCancel}>取消</button>
     </div>
   );
 }
