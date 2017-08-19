@@ -1,0 +1,15 @@
+.hidden{
+  display: none;
+}
+ul{
+  max-width: 400px;
+  height: 400px;
+  overflow: auto;
+  li{
+    position: relative;
+    .delete-btn{
+      right: 0;
+      position: absolute;
+    }
+  }
+}
