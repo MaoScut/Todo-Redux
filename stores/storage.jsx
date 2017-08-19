@@ -1,17 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-</head>
-<body>
-  
-</body>
-</html>
-<script>
-  const STORAGE_KEY = 'TODO_REDUX';
+const STORAGE_KEY = 'TODO_REDUX';
 //   const data = [{
 //   key: '123',
 //   content: 'contetn',
@@ -43,11 +30,3 @@ function addItem(item, cb) {
     setItemArray(itemArray.concat(item)).then(itemArray => cb(itemArray));
   })
 }
-// getItemArray().then(itemArray => console.log(itemArray)).catch(() => console.log('error!'));
-// console.log('start to get data.'); 
-addItem({
-  key: '2',
-  content: 'sss',
-  checked: false,
-},(arr) => console.log(arr));
-</script>
