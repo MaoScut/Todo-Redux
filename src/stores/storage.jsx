@@ -31,7 +31,7 @@ export function addOrUpdateItem(item) {
       const index = result.findIndex(v => v.id === item.id);
       const newResult = result.slice();
       newResult[index].content = item.content;
-      setItemArray(newResult);
+      return setItemArray(newResult);
     });
   }
   // 否则在末尾追加
