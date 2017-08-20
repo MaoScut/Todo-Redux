@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 // import * as TodoStore from '../../stores/TodoStore';
 // import TodoAction from '../../actions/TodoAction';
-import Statics from '../Statics';
+// import Statics from '../Statics';
 import List from '../List';
 import CreateTodo from '../CreateTodo';
 import Editor from '../Editor';
@@ -16,7 +16,7 @@ class Todo extends React.Component {
   }
   componentDidMount() {
     this.props.actions.getItems();
-    console.log('didmount');
+    // console.log('didmount');
     // this.props.actions.statics();
   }
   // componentDidUpdate() {
@@ -50,7 +50,7 @@ class Todo extends React.Component {
           onCancel={this.props.actions.cancelEdit}
         /> : null)}
         <CreateTodo onCreate={this.props.actions.create} />
-        <Statics donePercent={this.props.statics} />
+        {/* <Statics donePercent={this.props.statics} /> */}
       </div>
     );
   }
@@ -88,7 +88,7 @@ Todo.propTypes = {
     selectedItem: PropTypes.isRequired,
     isEditing: PropTypes.bool,
   }).isRequired,
-  statics: PropTypes.string.isRequired,
+  // statics: PropTypes.string.isRequired,
 };
 
 export default Todo;
