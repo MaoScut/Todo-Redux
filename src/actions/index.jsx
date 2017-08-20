@@ -31,10 +31,16 @@ export function save(item) {
       .then(result => dispatch(createGetItemsAction(result)));
   };
 }
+function createCheckAction() {
+  return {
+    type: ActionTypes.CHECK,
+  };
+}
 export function check(id) {
   return (dispatch) => {
     storage.toggleChecked(id)
-      .then(result => dispatch(createGetItemsAction(result)));
+      // .then(result => dispatch(createGetItemsAction(result)));
+      .then(result => dispatch(createCheckAction(result)));
   };
 }
 export function create() {
