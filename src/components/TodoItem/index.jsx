@@ -1,22 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function TodoItem({ item, hideDone, editHandle, checkHandle }) {
+function TodoItem({ item, hideDone }) {
   const { id, content, checked } = item;
   const className = checked && hideDone ? 'hidden' : '';
   // let checkbox = null;
-  function onEditClick(e) {
-    e.stopPropagation();
-    editHandle({
-      id,
-      content,
-      checked,
-    });
-  }
-  function checkboxClick() {
-    // checkbox.checked = !checkbox.checked;
-    checkHandle(id);
-  }
   return (
     <li className={className}>
       <input
@@ -27,7 +15,7 @@ function TodoItem({ item, hideDone, editHandle, checkHandle }) {
         readOnly
       />
       {content}
-      <button className="edit" onClick={onEditClick}>编辑</button>
+      <button className="edit" value={id} >编辑</button>
       <button className="delete-btn" value={id}>删除</button>
     </li>
   );
@@ -92,6 +80,6 @@ TodoItem.propTypes = {
     checked: PropTypes.bool.isRequired,
   }).isRequired,
   hideDone: PropTypes.bool.isRequired,
-  editHandle: PropTypes.func.isRequired,
-  checkHandle: PropTypes.func.isRequired,
 };
+
+export default TodoItem;
