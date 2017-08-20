@@ -19,10 +19,10 @@ class Todo extends React.Component {
     console.log('didmount');
     // this.props.actions.statics();
   }
-  componentDidUpdate() {
-    console.log('didupdate');
-    this.props.actions.statics();
-  }
+  // componentDidUpdate() {
+  //   console.log('didupdate');
+  //   this.props.actions.statics();
+  // }
   handleClick(e) {
     const targetClassName = e.target.className;
     switch (targetClassName) {
@@ -42,6 +42,7 @@ class Todo extends React.Component {
           hideHandle={this.props.actions.hide}
           editHandle={this.props.actions.showEditor}
           checkHandle={this.props.actions.check}
+          deleteHandle={this.props.actions.deleteItem}
         />
         {(this.props.edit.isEditing ? <Editor
           item={this.props.edit.selectedItem}
