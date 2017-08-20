@@ -13,3 +13,27 @@ ul{
     }
   }
 }
+.editor-container{
+  height: 100%;
+  top: -100%;
+  position: relative;
+  text-align: center;
+  .cover{
+    height: 100%;
+    background-color: grey;
+    opacity: 0.5;
+    z-index: 10;
+  }
+  .editor{
+    position: relative;
+    top: -50%;
+    transform: translateY(50%);
+    z-index: 20;
+  }
+}
+.todo-container{
+  height: 500px;
+  width: 400px;
+  position: relative;
+
+}
