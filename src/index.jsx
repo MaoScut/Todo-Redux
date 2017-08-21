@@ -22,8 +22,9 @@ const render = (Component) => {
 
 render(App);
 if (module.hot) {
-  module.hot.accept('./components/Todo', () => {
-    // const nextApp = require('./components/Todo').default;
-    render(App);
-  });
+  // module.hot.accept('./components/CTodo', () => {
+  //   const nextApp = require('./components/CTodo').default;
+  //   render(nextApp);
+  // });
+  module.hot.accept();
 }
