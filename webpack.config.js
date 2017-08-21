@@ -37,7 +37,7 @@ module.exports = {
         NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'production'), // default value if not specified
       },
     }),
-    new webpack.HotModuleReplacementPlugin(),
+    // new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),
     // new webpack.EnvironmentPlugin([
     //   'NODE_ENV',
