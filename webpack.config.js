@@ -3,6 +3,7 @@ const { resolve } = require('path');
 
 module.exports = {
   entry: [
+    'babel-polyfill',
     'react-hot-loader/patch',
     './src/index.jsx',
     // './src/test/testStorage.jsx',
@@ -24,14 +25,22 @@ module.exports = {
   module: {
     rules: [{
       test: /\.jsx?$/,
-      loaders: ['react-hot-loader/webpack', 'babel-loader'],
+      loaders: ['babel-loader'],
     }, {
       test: /\.scss$/,
       loaders: ['style-loader', 'css-loader', 'sass-loader'],
     }],
   },
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'production'), // default value if not specified
+      },
+    }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),
+    // new webpack.EnvironmentPlugin([
+    //   'NODE_ENV',
+    // ]),
   ],
 };

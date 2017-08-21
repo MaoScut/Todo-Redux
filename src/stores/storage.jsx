@@ -62,3 +62,9 @@ export function toggleChecked(id) {
 //     setItemArray(itemArray.concat(item)).then(itemArray => cb(itemArray));
 //   })
 // }
+export function getDonePercent() {
+  return getItemArray().then((result) => {
+    const doneNum = result.filter(v => v.checked).length;
+    return String(doneNum).concat('/', result.length);
+  });
+}
