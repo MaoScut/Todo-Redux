@@ -48,6 +48,7 @@
     "redux-actions": "^2.2.1",
     "redux-promise": "^0.5.3",
     "redux-promise-middleware": "^4.2.1",
+    "redux-saga": "^0.15.6",
     "redux-thunk": "^2.2.0",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.18.2",
