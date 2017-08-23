@@ -7,6 +7,7 @@ export const CHECK = 'CHECK';
 export const TOGGLE_ACHIEVED_ITEMS = 'TOGGLE_ACHIEVED_ITEMS';
 export const DELETE = 'DELETE';
 export const STATICS = 'STATICS';
+export const RECEIVE_ITEMS = 'RECEIVE_ITEMS';
 
 
 // actions:
