@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import List from '../List';
 import CreateTodo from '../CreateTodo';
 import Editor from '../Editor';
+import Error from '../Error';
 import './main.scss';
 
 // only Todo can reach store and action!
@@ -34,6 +35,7 @@ class Todo extends React.Component {
           onCancel={this.props.actions.cancelEdit}
         /> : null)}
         <CreateTodo onCreate={this.props.actions.create} />
+        <Error />
       </div>
     );
   }

@@ -56,3 +56,10 @@ export function cancelEdit() {
     type: ActionTypes.CANCEL_EDIT,
   };
 }
+
+export function requestError(action) {
+  return {
+    type: ActionTypes.ERROR,
+    payload: action,
+  };
+}
