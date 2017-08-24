@@ -1,6 +1,7 @@
 import uuid from 'uuid';
 
 const STORAGE_KEY = 'TODO_REDUX';
+const errorP = 0.2;
 //   const dat = [{
 //   id: '123',
 //   content: 'contetn',
@@ -31,6 +32,7 @@ export function addOrUpdateItem(item) {
       const index = result.findIndex(v => v.id === item.id);
       const newResult = result.slice();
       newResult[index].content = item.content;
+      if (Math.random() < errorP) throw Error('hhh');
       return setItemArray(newResult);
     });
   }
@@ -46,6 +48,7 @@ export function deleteItem(id) {
     const index = result.findIndex(v => v.id === id);
     const newResult = result.slice();
     newResult.splice(index, 1);
+    if (Math.random() < errorP) throw Error('hhh');
     return setItemArray(newResult);
   });
 }
@@ -54,6 +57,7 @@ export function toggleChecked(id) {
     const index = result.findIndex(v => v.id === id);
     const newResult = result.slice();
     newResult[index].checked = !newResult[index].checked;
+    if (Math.random() < errorP) throw Error('hhh');
     return setItemArray(newResult);
   });
 }
