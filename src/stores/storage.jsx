@@ -16,7 +16,7 @@ export function getItemArray() {
   const itemArray = JSON.parse(localStorage.getItem(STORAGE_KEY));
   return new Promise((resolve) => {
     setTimeout(() => {
-      resolve(itemArray);
+      resolve(itemArray || []);
     }, 500);
   });
 }
